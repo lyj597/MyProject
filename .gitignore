@@ -3,3 +3,6 @@
 ################################################################################
 
 /MyConsole/obj/Release/netcoreapp3.1
+/.vs/MyProject/DesignTimeBuild
+/.vs
+/MyCoreAPI/obj/Release/netcoreapp3.1

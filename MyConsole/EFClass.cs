@@ -37,5 +37,7 @@ namespace MyConsole
         public string Name { get; set; }
     }
 
+    public class EFClass { }
+
     
 }
