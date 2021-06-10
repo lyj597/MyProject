@@ -6,3 +6,7 @@
 /.vs/MyProject/DesignTimeBuild
 /.vs
 /MyCoreAPI/obj/Release/netcoreapp3.1
+/MyNetConsole/bin/Debug
+/MyNetConsole/obj/Debug
+/MyNetConsole/Properties
+/packages
