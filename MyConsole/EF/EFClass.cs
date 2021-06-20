@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace MyNetConsole.EF
+namespace MyConsole
 {
     public class Course
     {
@@ -34,7 +32,8 @@ namespace MyNetConsole.EF
 
     public class Blog
     {
-        public Blog() {
+        public Blog()
+        {
             Posts = new HashSet<Post>();
         }
         public int BlogId { get; set; }
@@ -50,7 +49,8 @@ namespace MyNetConsole.EF
 
     public class Post
     {
-        public Post() {
+        public Post()
+        {
             Comments = new HashSet<Comment>();
         }
         public int PostId { get; set; }
@@ -58,7 +58,8 @@ namespace MyNetConsole.EF
         public string Content { get; set; }
 
         [NotMapped]
-        public string PostDisplay {
+        public string PostDisplay
+        {
             get
             {
                 return Title + ":" + Content;
@@ -72,7 +73,8 @@ namespace MyNetConsole.EF
         public virtual ICollection<Comment> Comments { get; private set; }
     }
 
-    public class Comment {
+    public class Comment
+    {
         public int CommentId { get; set; }
 
         public string Name { get; set; }
@@ -82,7 +84,8 @@ namespace MyNetConsole.EF
         public virtual Post Post { get; private set; }
     }
 
-    public class Passport {
+    public class Passport
+    {
         [Key]
         [Column(Order = 1)]
         public int PassportNumber { get; set; }
@@ -91,7 +94,39 @@ namespace MyNetConsole.EF
         public string IssuingCountry { get; set; }
         public DateTime Issued { get; set; }
 
-        [MaxLength(10,ErrorMessage = "输入的Expires值不能超过10个字节"),MinLength(5)]
+        [MaxLength(10, ErrorMessage = "输入的Expires值不能超过10个字节"), MinLength(5)]
         public DateTime Expires { get; set; }
     }
+
+    /// <summary>
+    /// 添加架构
+    /// </summary>
+    //[Table("Test1",Schema ="dbo")]
+    public class Test1 { 
+        public int Test1Id { get; set; }
+        public string Name { get; set; }   
+
+    }
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class Student : Person
+    {
+        [ForeignKey("School")]
+        public int SchoolId { get; set; }
+        public virtual School School { get; set; }
+    }
+
+    public class School
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public List<Student> Students { get; set; }
+    }
+
 }
