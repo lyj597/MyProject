@@ -31,6 +31,9 @@ namespace MyNetConsole
 
                 ;
 
+                var Blog = new Blog();
+
+
 
             }
             Console.Read();

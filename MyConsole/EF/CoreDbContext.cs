@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MyConsole
@@ -13,10 +14,26 @@ namespace MyConsole
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<TestAA> TestAAs { get; set; }
+
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<School> Schools { get; set; }
+
+        /// <summary>
+        /// 定义带参数标量值函数方法，并将其映射到数据库函数
+        /// </summary>
+        /// <param name="BlogId"></param>
+        /// <returns></returns>
+        public int ActivePostCountForBlog(int BlogId) => throw new NotSupportedException();
+
+        /// <summary>
+        /// 定义不带参数的表值函数
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Blog> getPostCountForBlog()
+                  => FromExpression(() => getPostCountForBlog());
 
         public CoreDbContext() { 
         
@@ -49,6 +66,24 @@ namespace MyConsole
             /////设置必填项
             //modelBuilder.Entity<Blog>()
             //     .HasIndex(a => a.BlogId);
+
+            //modelBuilder.Entity<Blog>().ToFunction("getPostCountForBlog");
+
+            ///映射带参数的标量值函数
+            modelBuilder.HasDbFunction(typeof(CoreDbContext).GetMethod(nameof(ActivePostCountForBlog), new[] { typeof(int) }))
+            .HasName("CommentedPostCountForBlog");
+
+            ///映射不带参数的标量值函数
+            //modelBuilder.HasDbFunction(typeof(CoreDbContext).GetMethod(nameof(ActivePostCountForBlog)))
+            //.HasName("CommentedPostCountForBlog");
+
+            //映射不带参数的表值函数
+            modelBuilder.HasDbFunction(typeof(CoreDbContext).GetMethod(nameof(getPostCountForBlog)))
+                .HasName("getPostCountForBlog");
+
+
+            //modelBuilder.HasDbFunction(typeof(CoreDbContext).GetMethod(nameof(getBlogs)))
+            //.HasName("getPostCountForBlog");
 
             //modelBuilder.Entity<Person>()
             //.HasDiscriminator<string>("BlogType") //设置标识列的数据类型string,列名为：BlogType. 数据类型可以是string、int

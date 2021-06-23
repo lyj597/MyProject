@@ -30,6 +30,7 @@ namespace MyConsole
     }
 
 
+    [Table("Blogs")]
     public class Blog
     {
         public Blog()
@@ -44,7 +45,14 @@ namespace MyConsole
         [StringLength(200)]
         public string Url { get; set; }
 
-        public virtual ICollection<Post> Posts { get; private set; }
+        [NotMapped]
+        public DateTime StartDate { get; set; }
+
+        [ForeignKey("TestAA")]
+        public int? TestId { get; set; }
+        public TestAA TestAA { get; set; }
+
+        public virtual ICollection<Post> Posts { get;  set; }
     }
 
     public class Post
@@ -53,6 +61,7 @@ namespace MyConsole
         {
             Comments = new HashSet<Comment>();
         }
+
         public int PostId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
@@ -68,9 +77,19 @@ namespace MyConsole
 
         [ForeignKey("Blog")]
         public int BlogId { get; set; }
-        public virtual Blog Blog { get; private set; }
+        public virtual Blog Blog { get;  set; }
 
         public virtual ICollection<Comment> Comments { get; private set; }
+    }
+
+    [Table("TestAA")]
+    public class TestAA {
+        [Key]
+       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       public int TestId { get; set; }
+
+       public string Name { get; set; }
+
     }
 
     public class Comment
