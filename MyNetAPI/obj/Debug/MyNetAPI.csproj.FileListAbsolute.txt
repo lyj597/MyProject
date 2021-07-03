@@ -70,3 +70,6 @@ D:\Project\MyProject\MyNetAPI\obj\Debug\MyNetAPI.csproj.CopyComplete
 D:\Project\MyProject\MyNetAPI\obj\Debug\MyNetAPI.dll
 D:\Project\MyProject\MyNetAPI\obj\Debug\MyNetAPI.pdb
 D:\Project\MyProject\MyNetAPI\obj\Debug\MyNetAPI.csprojAssemblyReference.cache
+D:\Project\MyProject\MyNetAPI\bin\JWT.dll
+D:\Project\MyProject\MyNetAPI\bin\JWT.pdb
+D:\Project\MyProject\MyNetAPI\bin\JWT.xml

@@ -4,7 +4,6 @@ D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\MyConsole.runtimeconfig.j
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\MyConsole.runtimeconfig.dev.json
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\MyConsole.dll
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\MyConsole.pdb
-D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.csprojAssemblyReference.cache
 D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.AssemblyInfoInputs.cache
 D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.AssemblyInfo.cs
 D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.csproj.CoreCompileInputs.cache

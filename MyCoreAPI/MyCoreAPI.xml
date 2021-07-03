@@ -4,5 +4,11 @@
         <name>MyCoreAPI</name>
     </assembly>
     <members>
+        <member name="M:MyCoreAPI.Controllers.WeatherForecastController.Get">
+            <summary>
+            这是一个获取天气的接口
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>

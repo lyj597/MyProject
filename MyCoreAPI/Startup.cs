@@ -8,11 +8,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MyCoreAPI.Models;
+using MyCoreAPI.Jwt;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,61 +33,74 @@ namespace MyCoreAPI
         {
             services.AddControllers();
 
-            #region swagger
-              services.AddSwaggerGen(c => {
-                  c.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "jwtSwagger", Version = "V1" });
-                  var basepath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
-                  var xmlpath = Path.Combine(basepath, "MyCoreAPI.xml");//获取xml路劲
-                  c.IncludeXmlComments(xmlpath);
+            #region Swagger
 
-                  #region 添加jwt
-                  c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-                  {
-                      In=Microsoft.OpenApi.Models.ParameterLocation.Header,
-                      Type=Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
-                      Description="在下框中输入需要添加的jwt授权Token:Bearer Token",
-                      Name="Authorization",
-                      BearerFormat="JWT",
-                      Scheme="Bearer"
-                  });
-                  c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-                  {
-                     { 
-                        new OpenApiSecurityScheme{
-                            Reference=new OpenApiReference{
-                            Type=ReferenceType.SecurityScheme,
-                            Id="Bearer"
-                          }
-                        },new string[]{ }
-                      }
-                  });
-                  #endregion
-              });
+            services.AddSwaggerGen(c=> {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyCoreAPI", Version = "v1" });
+                //c.SwaggerDoc("v2", new OpenApiInfo { Title = "MyCoreAPI", Version = "v2" });
+                // 为 Swagger JSON and UI设置xml文档注释路径
+                var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
+                var xmlPath = Path.Combine(basePath, "MyCoreAPI.xml");
+                c.IncludeXmlComments(xmlPath);
+
+                #region Token绑定到ConfigureServices
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Description = "在下框中输入请求头中需要添加Jwt授权Token：Bearer Token",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] { }
+                    }
+                });
+                #endregion
+
+
+            });
 
             #endregion
 
-            #region 注册JwT验证
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            #region JWT配置
+            services.AddTransient<ITokenHelper, TokenHelper>();
+            //读取配置文件配置的jwt相关配置
+            services.Configure<JWTConfig>(Configuration.GetSection("JWTConfig"));
+
+            //启用JWT
+            services.AddAuthentication(Options =>
             {
-                //获取appsettings配置值
-                var jwtmodel = Configuration.GetSection(nameof(JwtIssuerOptions));
-                var iss = jwtmodel[nameof(JwtIssuerOptions.Issuer)];
-                var key = jwtmodel[nameof(JwtIssuerOptions.SecurityKey)];
-                var audience = jwtmodel[nameof(JwtIssuerOptions.Audience)];
-                opt.TokenValidationParameters = new TokenValidationParameters
+                Options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                Options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).
+            AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,//是否验证Issuer
                     ValidateAudience = true,//是否验证Audience
                     ValidateLifetime = true,//是否验证失效时间
-                    ClockSkew = TimeSpan.FromSeconds(30),
                     ValidateIssuerSigningKey = true,//是否验证SecurityKey
-                    ValidAudience = audience,//Audience
-                    ValidIssuer = iss,//Issuer，这两项和前面签发jwt的设置一致
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))//拿到SecurityKey
+                    ValidAudience = Configuration["JWTConfig:Audience"],//Audience
+                    ValidIssuer = Configuration["JWTConfig:Issuer"],//Issuer，这两项和签发jwt的设置一致
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWTConfig:IssuerSigningKey"]))//拿到SecurityKey
                 };
             });
-            #endregion
 
+            services.AddScoped<TokenFilter>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,18 +111,21 @@ namespace MyCoreAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            #region Swagger
+            app.UseRouting();
 
+            //启用中间件服务生成Swagger作为JSON终结点
             app.UseSwagger();
-            app.UseSwaggerUI(x=> {
-                x.SwaggerEndpoint("/swagger/V1/swagger.json", "MyCore API");
+
+            //启用中间件服务对swagger-ui，指定Swagger JSON终结点
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyCoreAPI V1");
+                //c.SwaggerEndpoint("/swagger/v2/swagger.json", "MyCoreAPI V2");
+                //c.RoutePrefix = string.Empty;
             });
 
-            #endregion
-
+            //启用认证中间件 要写在授权UseAuthorization()的前面
             app.UseAuthentication();
-
-            app.UseRouting();
 
             app.UseAuthorization();
 

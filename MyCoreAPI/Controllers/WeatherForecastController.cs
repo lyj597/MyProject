@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MyCoreAPI.Jwt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace MyCoreAPI.Controllers
 {
-    [Authorize]
     [ApiController]
+    [Authorize]
+    //[ServiceFilter(typeof(TokenFilter))]    
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
@@ -25,6 +27,10 @@ namespace MyCoreAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// 这是一个获取天气的接口
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
