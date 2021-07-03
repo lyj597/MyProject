@@ -1,0 +1,11 @@
+D:\Project\MyProject\WcfServiceHost\bin\Debug\WcfServiceHost.exe.config
+D:\Project\MyProject\WcfServiceHost\bin\Debug\WcfServiceHost.exe
+D:\Project\MyProject\WcfServiceHost\bin\Debug\WcfServiceHost.pdb
+D:\Project\MyProject\WcfServiceHost\bin\Debug\MyWCFDLL.dll
+D:\Project\MyProject\WcfServiceHost\bin\Debug\MyWCFDLL.pdb
+D:\Project\MyProject\WcfServiceHost\bin\Debug\MyWCFDLL.dll.config
+D:\Project\MyProject\WcfServiceHost\obj\Debug\WcfServiceHost.csproj.CoreCompileInputs.cache
+D:\Project\MyProject\WcfServiceHost\obj\Debug\WcfServiceHost.csproj.CopyComplete
+D:\Project\MyProject\WcfServiceHost\obj\Debug\WcfServiceHost.exe
+D:\Project\MyProject\WcfServiceHost\obj\Debug\WcfServiceHost.pdb
+D:\Project\MyProject\WcfServiceHost\obj\Debug\WcfServiceHost.csprojAssemblyReference.cache

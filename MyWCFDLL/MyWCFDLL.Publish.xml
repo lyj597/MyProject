@@ -1,0 +1,9 @@
+<publishData>
+  <publishTarget publishUrl="E:\publish\">
+    <file relUrl="bin/MyWCFDLL.pdb" publishTime="06/29/2021 22:34:12" />
+    <file relUrl="bin/MyWCFDLL.dll" publishTime="06/29/2021 22:34:12" />
+    <file relUrl="bin/MyWCFDLL.dll.config" publishTime="06/29/2021 22:14:43" />
+    <file relUrl="Web.config" publishTime="06/29/2021 22:14:43" />
+    <file relUrl="MyWCFDLL.UserService.svc" publishTime="06/29/2021 22:35:38" />
+  </publishTarget>
+</publishData>

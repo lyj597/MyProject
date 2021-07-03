@@ -1,0 +1,8 @@
+2021-06-30 21:27:49.1478 Info Message Template Auto Format enabled
+2021-06-30 21:27:49.2362 Info Adding target FileTarget(Name=allfile)
+2021-06-30 21:27:49.2362 Info Adding target FileTarget(Name=ownFile-web)
+2021-06-30 21:27:49.2362 Info Adding target NullTarget(Name=blackhole)
+2021-06-30 21:27:49.2743 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=48, FilePath=D:\Project\MyProject\MyCoreMvc\bin\Debug\netcoreapp3.1\NLog.config
+2021-06-30 21:27:49.2852 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2021-06-30 21:27:49.2968 Info Configuration initialized.
+2021-06-30 21:27:49.2968 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False

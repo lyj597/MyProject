@@ -5,8 +5,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MyWCFDLL;
 
 namespace MyNetConsole
 {
@@ -16,28 +18,13 @@ namespace MyNetConsole
 
         static void Main(string[] args)
         {
-            var existingBlog = new Blog { BlogId = 3, Name = "ADO.NET Blog" };
-
-            using (ProductContext _context = new ProductContext(ConnectString)) {
-
-                var con=_context.Database.Connection;
-                if (con.State == ConnectionState.Open) { 
-                
-                }
-                var blog = _context.Blogs.Find(1);
-
-                // Make a modification to Name in the tracked entity
-                blog.Name = "My Cool Blog2";
-
-                ;
-
-                var Blog = new Blog();
-
-
-
-            }
+            var url = @"http://localhost:1000/MyWCFDLL.UserService.svc";
+            var fatory = WcfInvokeFactory.CreateServiceByUrl<IUserService>(url);
+            var aaa= fatory.GetString();
             Console.Read();
         }
+
+       
 
         public static void PrintValues(DbPropertyValues values)
         {

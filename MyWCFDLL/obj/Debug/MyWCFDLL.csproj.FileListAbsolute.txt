@@ -1,0 +1,6 @@
+D:\Project\MyProject\MyWCFDLL\bin\Debug\MyWCFDLL.dll.config
+D:\Project\MyProject\MyWCFDLL\bin\Debug\MyWCFDLL.dll
+D:\Project\MyProject\MyWCFDLL\bin\Debug\MyWCFDLL.pdb
+D:\Project\MyProject\MyWCFDLL\obj\Debug\MyWCFDLL.csproj.CoreCompileInputs.cache
+D:\Project\MyProject\MyWCFDLL\obj\Debug\MyWCFDLL.dll
+D:\Project\MyProject\MyWCFDLL\obj\Debug\MyWCFDLL.pdb
