@@ -92,6 +92,19 @@ namespace MyConsole
 
     }
 
+    [Table("TaskTest1")]
+    public class TaskTest1 { 
+         public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    [Table("TaskTest2")]
+    public class TaskTest2
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public class Comment
     {
         public int CommentId { get; set; }

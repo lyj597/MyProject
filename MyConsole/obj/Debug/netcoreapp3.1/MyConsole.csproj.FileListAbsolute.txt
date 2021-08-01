@@ -59,3 +59,5 @@ D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstand
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.csproj.CopyComplete
+D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.csprojAssemblyReference.cache
+D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\Consul.dll

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using MyCoreAPI.Jwt;
 using MyCoreAPI.Models;
@@ -16,15 +17,19 @@ namespace MyCoreAPI.Controllers
     {
         private readonly ITokenHelper tokenHelper;
         private IOptions<JWTConfig> _options;
+        private readonly IConfiguration _configuration;
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="_tokenHelper"></param>
-        public AccountController(ITokenHelper _tokenHelper, IOptions<JWTConfig> options)
+      /// <summary>
+      /// 构造函数
+      /// </summary>
+      /// <param name="_tokenHelper"></param>
+      /// <param name="options"></param>
+        public AccountController(ITokenHelper _tokenHelper, IOptions<JWTConfig> options
+            , IConfiguration configuration)
         {
             tokenHelper = _tokenHelper;
             _options = options;
+            _configuration = configuration;
         }
 
 

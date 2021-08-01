@@ -1,0 +1,4 @@
+2021-07-06 20:47:10,591 [5] INFO   [(null)] - {"UserName":"张三","Password":"1234","IDNumber":"11111111111111111","Telephone":"2222222222"}
+2021-07-06 20:48:27,856 [4] INFO   [(null)] - {"UserName":"张三","Password":"1234","IDNumber":"11111111111111111","Telephone":"2222222222"}
+2021-07-06 21:00:43,464 [5] INFO   [(null)] - {"UserName":"张三","Password":"1234","IDNumber":"11111111111111111","Telephone":"2222222222"}
+2021-07-06 21:25:02,302 [8] INFO   [(null)] - {"UserName":"张三","Password":"1234","IDNumber":"11111111111111111","Telephone":"2222222222"}

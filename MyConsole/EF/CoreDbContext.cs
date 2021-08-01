@@ -16,6 +16,10 @@ namespace MyConsole
 
         public DbSet<TestAA> TestAAs { get; set; }
 
+        public DbSet<TaskTest1> taskTest1s { get; set; }
+
+        public DbSet<TaskTest2> taskTest2s { get; set; }
+
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Student> Students { get; set; }

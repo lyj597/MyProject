@@ -58,7 +58,7 @@ namespace MyConsole
     public class SingleTest {
         private SingleTest() { }
 
-        private static BaseClass _base = new BaseClass() { Name="中华人民共和国"};
+        private static BaseClass _base = new BaseClass() { Name = "中华人民共和国" };
 
         public static BaseClass GetBase {
             get {
@@ -67,7 +67,7 @@ namespace MyConsole
         }
     }
 
-     public class BaseClass
+    public class BaseClass
     {
         public string Name { get; set; }
     }
@@ -96,7 +96,7 @@ namespace MyConsole
         }
 
         public static Car CreateCar(Car car) {
-            
+
             return car;
         }
     }
@@ -105,100 +105,103 @@ namespace MyConsole
 
     #region 观察者模式
 
-    public abstract class TenXun
-    {
-        public List<IObservable> _observables = new List<IObservable>();
+    public abstract class TenXun{
+        List<IObserverable> observables = new List<IObserverable>();
 
-        public string Info { get; set; }
-
-        public TenXun(string _Info) {
-            Info = _Info;
+         public string Info { get; set; }
+        public TenXun(string info) {
+            this.Info = info;
         }
 
-        public void AddObservable(IObservable observable) {
-            _observables.Add(observable);
+        public void AddObserverable(IObserverable observerable) {
+            observables.Add(observerable);
         }
 
-        public void RemoveObservable(IObservable observable)
+        public void RemoveObserverable(IObserverable observerable)
         {
-            _observables.Remove(observable);
+            observables.Add(observerable);
         }
 
         public void Update() {
-            if (_observables != null) {
-                foreach (var o in _observables) {
-                    o.RecieveMessage(this);
-                }
-                    
+            if (observables != null && observables.Count > 0) {
+                foreach (var o in observables)
+                    o.RecieveMssgage(this);
             }
         }
     }
 
-    public interface IObservable
-    {
-        public void RecieveMessage(TenXun tenXun);
+    public interface IObserverable {
+        void RecieveMssgage(TenXun tenXun);
     }
 
-     // 具体订阅号类
-     public class TenXunGame : TenXun
-     {
-         public TenXunGame(string info)
-             : base(info) 
-         { 
-         }
+    public class TenXunUpdate : TenXun {
+        public TenXunUpdate(string info) : base(info) { }
+
     }
 
-    // 具体的订阅者类
-     public class Subscriber : IObservable
+    public class Observerable : IObserverable
     {
-         public string Name { get; set; }
-         public Subscriber(string name)
-         {
-             this.Name = name;
-         }       
+        public string Name { get; set; }
 
-        public void RecieveMessage(TenXun tenXun)
+        public Observerable(string name) {
+            this.Name = name;
+        }
+        public void RecieveMssgage(TenXun tenXun)
         {
-            Console.WriteLine($"Name:{Name} Info is: {tenXun.Info}");
+            Console.WriteLine($"HI {this.Name } 腾讯更新了{tenXun.Info},请及时更新!");
         }
     }
 
-    public delegate void EventHandler();
+
 
     public class Cat {
-      public EventHandler eventHandler;
+        public event Action CatEvent;
+        public string Name { get; set; }
 
-        public Cat() {
-            eventHandler += new EventHandler(Mouse.Escape);
-            eventHandler += new EventHandler(Dog.Chase);
+        public Cat(string name) {
+            this.Name = name;
         }
-      public  void Call() {
-          Console.WriteLine("猫叫了");
-            Update();
-      }
 
-        private void Update() {
-            if (eventHandler != null) {
-                eventHandler();
+        public void CatComeIn() {
+            Console.WriteLine($"猫{this.Name}进来了");
+            if (CatEvent != null)
+            {
+                CatEvent();
             }
         }
     }
-    public  class Mouse
+
+    public class Mouse
     {
-        public static void Escape()
+        public string Name { get; set; }
+
+        public Mouse(string name,Cat cat)
         {
-            Console.WriteLine("老鼠逃跑了");
+            this.Name = name;
+            cat.CatEvent += MouseRunAway;
+        }
+
+        public void MouseRunAway()
+        {
+            Console.WriteLine($"老鼠{this.Name}逃跑了");
         }
     }
 
-    public  class Dog
+    public class Dog
     {
-        public static void Chase()
+        public string Name { get; set; }
+
+        public Dog(string name, Cat cat)
         {
-            Console.WriteLine("狗追了");
+            this.Name = name;
+            cat.CatEvent += DogChase;
+        }
+
+        public void DogChase()
+        {
+            Console.WriteLine($"狗{this.Name}追了");
         }
     }
-
 
     #endregion
 }

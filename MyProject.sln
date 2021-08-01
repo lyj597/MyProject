@@ -20,7 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceHost", "WcfServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNetAPI", "MyNetAPI\MyNetAPI.csproj", "{25AD423F-1B74-4396-AF66-E8E86B14E13B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCoreAPI", "MyCoreAPI\MyCoreAPI.csproj", "{3A65F889-E09F-4ED1-B5B8-AA21766541D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCoreAPI", "MyCoreAPI\MyCoreAPI.csproj", "{3A65F889-E09F-4ED1-B5B8-AA21766541D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCoreMVC", "MyCoreMVC\MyCoreMVC.csproj", "{5E5D18B3-0ED9-4437-A6F7-3D3F9CF75051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GateWayDemo", "GateWayDemo\GateWayDemo.csproj", "{EA583F64-CA20-436F-9FA2-2A7C54AF5A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +64,14 @@ Global
 		{3A65F889-E09F-4ED1-B5B8-AA21766541D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A65F889-E09F-4ED1-B5B8-AA21766541D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A65F889-E09F-4ED1-B5B8-AA21766541D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5D18B3-0ED9-4437-A6F7-3D3F9CF75051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5D18B3-0ED9-4437-A6F7-3D3F9CF75051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5D18B3-0ED9-4437-A6F7-3D3F9CF75051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5D18B3-0ED9-4437-A6F7-3D3F9CF75051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA583F64-CA20-436F-9FA2-2A7C54AF5A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA583F64-CA20-436F-9FA2-2A7C54AF5A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA583F64-CA20-436F-9FA2-2A7C54AF5A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA583F64-CA20-436F-9FA2-2A7C54AF5A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,12 @@
         <name>MyCoreAPI</name>
     </assembly>
     <members>
-        <member name="M:MyCoreAPI.Controllers.AccountController.#ctor(MyCoreAPI.Jwt.ITokenHelper,Microsoft.Extensions.Options.IOptions{MyCoreAPI.Jwt.JWTConfig})">
+        <member name="M:MyCoreAPI.Controllers.AccountController.#ctor(MyCoreAPI.Jwt.ITokenHelper,Microsoft.Extensions.Options.IOptions{MyCoreAPI.Jwt.JWTConfig},Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             构造函数
             </summary>
             <param name="_tokenHelper"></param>
+            <param name="options"></param>
         </member>
         <member name="M:MyCoreAPI.Controllers.AccountController.Login(MyCoreAPI.Models.LoginInput)">
             <summary>
@@ -29,6 +30,12 @@
             验证Token 带返回状态
             </summary>
             <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCoreAPI.Controllers.UserController.getValue">
+            <summary>
+            获取值
+            </summary>
             <returns></returns>
         </member>
         <member name="M:MyCoreAPI.Controllers.WeatherForecastController.Get">

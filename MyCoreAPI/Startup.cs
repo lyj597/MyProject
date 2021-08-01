@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyCoreAPI.Jwt;
+using MyCoreAPI.Models.Consul;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -133,6 +134,11 @@ namespace MyCoreAPI
             {
                 endpoints.MapControllers();
             });
+
+            //注册consul,执行，且只执行一次
+            this.Configuration.ConsulRegister();
+
+
         }
     }
 }
