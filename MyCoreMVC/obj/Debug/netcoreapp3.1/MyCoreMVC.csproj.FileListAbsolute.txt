@@ -50,3 +50,16 @@ D:\Project\MyProject\MyCoreMVC\obj\Debug\netcoreapp3.1\MyCoreMVC.genruntimeconfi
 D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\autofac.json
 D:\Project\MyProject\MyCoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 D:\Project\MyProject\MyCoreMVC\obj\Debug\netcoreapp3.1\MyCoreMVC.csprojAssemblyReference.cache
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\ServiceStack.Common.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\ServiceStack.Interfaces.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\ServiceStack.Redis.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\ServiceStack.Redis.Extension.AspNetCore.dll
+D:\Project\MyProject\MyCoreMVC\bin\Debug\netcoreapp3.1\ServiceStack.Text.dll

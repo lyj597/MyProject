@@ -11,6 +11,13 @@ namespace MyConsole
 
         public static string ConnectString = "Data Source=.;Initial Catalog=Test;User ID=sa;Password=sa1234";
 
+        private static List<string> readConnectList = new List<string>()
+        {
+            "Data Source=.;Initial Catalog=TestCopy1;User ID=sa;Password=sa1234",
+            "Data Source=.;Initial Catalog=TestCopy2;User ID=sa;Password=sa1234",
+            "Data Source=.;Initial Catalog=TestCopy3;User ID=sa;Password=sa1234"
+        };
+
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
 
@@ -53,10 +60,24 @@ namespace MyConsole
 
         }
 
+        /// <summary>
+        /// 获取数据库连接
+        /// </summary>
+        /// <param name="dbType"></param>
+        /// <returns></returns>
+        public static string GetDbConnectString(ConnectDbType dbType) {
+            if (dbType == ConnectDbType.Write) {
+                return ConnectString;
+            }
+            var num= new Random(DateTime.Now.Millisecond).Next(0, readConnectList.Count-1);
+            return readConnectList[num];
+        }
 
-        public static CoreDbContext GetContext(string ConnectString){
+        public static CoreDbContext GetContext(ConnectDbType dbType)
+        {
+            var connectStr= GetDbConnectString(dbType);
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
-            var option = optionsBuilder.UseSqlServer(ConnectString).Options;
+            var option = optionsBuilder.UseSqlServer(connectStr).Options;
             return new CoreDbContext(option);
         }
 

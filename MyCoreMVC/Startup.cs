@@ -60,6 +60,17 @@ namespace MyCoreMVC
 
             services.AddOptions();
 
+            //services.AddMemoryCache(option =>
+            //{
+
+            //});
+
+            //redis通过配置注入
+            services.AddServiceStackRedisCache(Configuration.GetSection("ServiceStackRedisOptions"));
+
+
+
+
             services.Configure<FddSettings>(Configuration.GetSection("FddSettings"));
 
             #region IOC依赖注入
@@ -157,7 +168,6 @@ namespace MyCoreMVC
                FileProvider=new PhysicalFileProvider(Directory.GetCurrentDirectory() + @"/wwwroot")
             });
 
-     
 
             app.UseRouting();
 

@@ -128,6 +128,7 @@ namespace MyCoreAPI
             //启用认证中间件 要写在授权UseAuthorization()的前面
             app.UseAuthentication();
 
+            //授权
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -135,8 +136,8 @@ namespace MyCoreAPI
                 endpoints.MapControllers();
             });
 
-            //注册consul,执行，且只执行一次
-            this.Configuration.ConsulRegister();
+            ////注册consul,执行，且只执行一次
+            //this.Configuration.ConsulRegister();
 
 
         }

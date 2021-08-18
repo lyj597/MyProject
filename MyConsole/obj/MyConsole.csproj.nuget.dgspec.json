@@ -51,6 +51,14 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.6, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.2.62, )"
+            },
+            "redlock-cs": {
+              "target": "Package",
+              "version": "[2.0.8, )"
             }
           },
           "imports": [
@@ -68,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.205\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     }

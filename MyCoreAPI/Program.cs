@@ -15,9 +15,9 @@ namespace MyCoreAPI
         public static void Main(string[] args)
         {
             //支持命令行参数
-            new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddCommandLine(args) //命令行参数
-                .Build();
+            //new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddCommandLine(args) //命令行参数
+            //    .Build();
 
             CreateHostBuilder(args).Build().Run();
         }

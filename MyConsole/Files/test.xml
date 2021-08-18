@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
-<Test xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" No="001">
-  <Name>英语</Name>
-</Test>
+<ArrayOfStudents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Students>
+    <Id>1</Id>
+    <Name>张三</Name>
+  </Students>
+  <Students>
+    <Id>2</Id>
+    <Name>李四</Name>
+  </Students>
+</ArrayOfStudents>

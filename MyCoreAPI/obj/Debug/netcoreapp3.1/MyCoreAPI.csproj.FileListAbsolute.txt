@@ -34,4 +34,3 @@ D:\Project\MyProject\MyCoreAPI\obj\Debug\netcoreapp3.1\MyCoreAPI.csproj.CopyComp
 D:\Project\MyProject\MyCoreAPI\obj\Debug\netcoreapp3.1\MyCoreAPI.dll
 D:\Project\MyProject\MyCoreAPI\obj\Debug\netcoreapp3.1\MyCoreAPI.pdb
 D:\Project\MyProject\MyCoreAPI\obj\Debug\netcoreapp3.1\MyCoreAPI.genruntimeconfig.cache
-D:\Project\MyProject\MyCoreAPI\obj\Debug\netcoreapp3.1\MyCoreAPI.csprojAssemblyReference.cache

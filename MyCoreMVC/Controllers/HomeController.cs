@@ -5,6 +5,9 @@ using log4net.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.ServiceStackRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -31,13 +34,16 @@ namespace MyCoreMVC.Controllers
         private readonly ITestService _service1;
         private readonly IOptions<FddSettings> _settings;
         private readonly IConfiguration _configuration;
+        private readonly IMemoryCache _cache;
+        private readonly IServiceStackRedisCache _redisCache;
 
 
         public HomeController(
             IOptions<FddSettings> settings
             ,IConfiguration configuration
             , IServiceProvider provider
-           
+            ,IMemoryCache cache
+            , IServiceStackRedisCache redisCache
             )
         {
             _configuration = configuration;
@@ -53,7 +59,8 @@ namespace MyCoreMVC.Controllers
             //_service = service;
             //_service1 = service1;
             _settings = settings;
-
+            _cache = cache;
+            _redisCache = redisCache;
         }
 
         private async Task GetTest() {
@@ -68,10 +75,33 @@ namespace MyCoreMVC.Controllers
             //var userString = this.HttpContext.Session.GetString("CurrUser");
             //var user=JsonConvert.DeserializeObject<Users>(userString);
             //ViewData["User"] = user;
+
+            string key = string.Format(MemoryCacheKey.MemoryCacheSendEmail, "yujie.lin@fsg.com", "1111");
+
+            _cache.Set<string>(key, "这是yujie.lin@fsg.com.cn的邮件",DateTimeOffset.Now.AddMinutes(1));
+
+            _redisCache.Set("aa", new Users
+            {
+                IDNumber = "1111111",
+                Password = "2222",
+                UserName = "张三"
+            });
+            //var ret=_redisCache.Get<Users>("aa");
+
+
             var port= _configuration["Settings:Port"];
             this.ViewBag.Port = port;
             return View();
         }
+
+        public IActionResult Index()
+        {
+            string key = string.Format(MemoryCacheKey.MemoryCacheSendEmail, "yujie.lin@fsg.com", "1111");
+
+            ViewBag.message=_cache.Get<string>(key);
+            return View();
+        }
+
 
 
         public IActionResult Privacy()
