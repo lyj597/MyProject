@@ -32,6 +32,12 @@
             <param name="tokenStr"></param>
             <returns></returns>
         </member>
+        <member name="M:MyCoreAPI.Controllers.GoodsController.FlushSales">
+            <summary>
+            抢购
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MyCoreAPI.Controllers.UserController.getValue">
             <summary>
             获取值
@@ -177,6 +183,51 @@
             </summary>
             <param name="encodeJwt"></param>
             <returns></returns>
+        </member>
+        <member name="T:MyCoreAPI.Models.Redis.RedisHelp">
+            <summary>
+            基于ServiceStack.redis的分布式锁
+            </summary>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisHelp.RedisLock(System.String,System.String)">
+            <summary>
+            redis加锁
+            </summary>
+            <param name="Key"></param>
+            <param name="Value"></param>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisHelp.RedisUnLock(System.String,System.String)">
+            <summary>
+            取消分布式锁
+            </summary>
+            <param name="Key"></param>
+            <param name="Value"></param>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisHelp.RedisDispose">
+            <summary>
+            释放redis
+            </summary>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisExchangeHelp.getRedisDB(System.Int32)">
+            <summary>
+            获取db，默认16个，默认0
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisExchangeHelp.RedisLock(System.String,System.String)">
+            <summary>
+            加分布式锁
+            </summary>
+            <param name="Key"></param>
+            <param name="Value"></param>
+        </member>
+        <member name="M:MyCoreAPI.Models.Redis.RedisExchangeHelp.RedisUnLock(System.String,System.String)">
+            <summary>
+            删除分布式锁
+            </summary>
+            <param name="Key"></param>
+            <param name="Value"></param>
         </member>
     </members>
 </doc>

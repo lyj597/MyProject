@@ -80,3 +80,4 @@ D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcorea
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\ServiceStack.Common.xml
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\ServiceStack.Redis.xml
 D:\Project\MyProject\MyConsole\bin\Debug\netcoreapp3.1\ServiceStack.Text.xml
+D:\Project\MyProject\MyConsole\obj\Debug\netcoreapp3.1\MyConsole.csprojAssemblyReference.cache

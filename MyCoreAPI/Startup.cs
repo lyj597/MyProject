@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyCoreAPI.Jwt;
 using MyCoreAPI.Models.Consul;
+using MyCoreAPI.Models.Redis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -102,6 +103,12 @@ namespace MyCoreAPI
             services.AddScoped<TokenFilter>();
 
             #endregion
+
+            #region “¿¿µ◊¢»Î
+            services.AddTransient<RedisHelp>();
+            services.AddTransient<RedisExchangeHelp>();
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
